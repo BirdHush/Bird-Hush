@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why the Sparrow Sings Before Sunrise | Bird Hush</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --warm-dark: #1a1510;
+    --warm-mid: #2e2418;
+    --amber: #c8954a;
+    --gold: #e6b86a;
+    --cream: #f7f2ea;
+    --soft-cream: #faf7f2;
+    --muted: #8a7d6a;
+    --text: #2c2218;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--soft-cream);
+    color: var(--text);
+    font-family: 'Lora', Georgia, serif;
+    line-height: 1.9;
+    font-size: 18px;
+  }
+
+  /* Hero */
+  .hero {
+    background: var(--warm-dark);
+    min-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 70%, rgba(200,149,74,0.18) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .channel-tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .channel-tag::before,
+  .channel-tag::after {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--amber);
+    opacity: 0.5;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    font-weight: 700;
+    color: #f5ede0;
+    line-height: 1.2;
+    max-width: 760px;
+    margin-bottom: 20px;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-subtitle {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: rgba(245,237,224,0.6);
+    max-width: 520px;
+    margin-bottom: 48px;
+    line-height: 1.7;
+  }
+
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: rgba(245,237,224,0.4);
+  }
+
+  .hero-meta span { display: flex; align-items: center; gap: 6px; }
+
+  .sparrow-icon {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 80px;
+    opacity: 0.07;
+    pointer-events: none;
+    line-height: 1;
+  }
+
+  /* Article */
+  .article-wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 80px 24px 120px;
+  }
+
+  /* Drop cap intro */
+  .intro-block {
+    position: relative;
+    padding: 48px 40px;
+    background: white;
+    border-radius: 4px;
+    margin-bottom: 64px;
+    border-left: 3px solid var(--amber);
+    box-shadow: 0 2px 24px rgba(0,0,0,0.06);
+  }
+
+  .intro-block p {
+    font-size: 1.15rem;
+    color: #3a2e22;
+    line-height: 1.85;
+  }
+
+  .intro-block p:first-child::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.2rem;
+    font-weight: 700;
+    float: left;
+    line-height: 0.82;
+    margin: 6px 12px 0 0;
+    color: var(--amber);
+  }
+
+  /* Section headings */
+  .section-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: var(--warm-dark);
+    line-height: 1.3;
+    margin-bottom: 28px;
+  }
+
+  /* Body text */
+  .body-text p {
+    margin-bottom: 26px;
+    color: #352a1e;
+    font-size: 1.02rem;
+  }
+
+  .body-text p:last-child { margin-bottom: 0; }
+
+  /* Pull quote */
+  .pull-quote {
+    margin: 56px -20px;
+    padding: 40px 40px;
+    background: var(--warm-dark);
+    border-radius: 3px;
+    position: relative;
+  }
+
+  .pull-quote::before {
+    content: '\201C';
+    font-family: 'Playfair Display', serif;
+    font-size: 120px;
+    color: var(--amber);
+    opacity: 0.25;
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    line-height: 1;
+  }
+
+  .pull-quote p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.35rem;
+    color: #f5ede0;
+    line-height: 1.65;
+    position: relative;
+    z-index: 1;
+    margin: 0;
+  }
+
+  /* Fact box */
+  .fact-box {
+    background: #fff8ee;
+    border: 1px solid #e8d5b0;
+    border-radius: 4px;
+    padding: 32px 36px;
+    margin: 48px 0;
+  }
+
+  .fact-box-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 18px;
+  }
+
+  .fact-box ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .fact-box ul li {
+    font-size: 0.95rem;
+    color: #4a3a28;
+    padding: 8px 0;
+    border-bottom: 1px solid #e8d5b0;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.6;
+  }
+
+  .fact-box ul li:last-child { border-bottom: none; }
+
+  .fact-box ul li::before {
+    content: '🐦';
+    font-size: 0.85rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* Section divider */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 64px 0;
+    opacity: 0.3;
+  }
+
+  .divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--warm-dark);
+  }
+
+  .divider span { font-size: 18px; }
+
+  /* Section block */
+  .section-block { margin-bottom: 72px; }
+
+  /* Outro */
+  .outro {
+    background: var(--warm-dark);
+    border-radius: 4px;
+    padding: 56px 48px;
+    margin-top: 72px;
+    text-align: center;
+  }
+
+  .outro p {
+    font-family: 'Lora', serif;
+    font-size: 1.08rem;
+    color: rgba(245,237,224,0.75);
+    line-height: 1.9;
+    margin-bottom: 20px;
+  }
+
+  .outro p:last-of-type { margin-bottom: 36px; }
+
+  .outro .closing-line {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--gold);
+    line-height: 1.6;
+    margin-bottom: 40px;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: var(--amber);
+    color: var(--warm-dark);
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    border-radius: 2px;
+    text-decoration: none;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 40px 24px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    border-top: 1px solid #e8e0d4;
+  }
+
+  footer strong { color: var(--amber); }
+
+  @media (max-width: 600px) {
+    .intro-block { padding: 32px 24px; }
+    .pull-quote { margin: 40px 0; padding: 32px 28px; }
+    .outro { padding: 40px 28px; }
+    h2 { font-size: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="channel-tag">Bird Hush</div>
+  <h1 class="hero-title">Why the Sparrow Sings<br><em>Before Sunrise</em></h1>
+  <p class="hero-subtitle">The secret life of the world's most overlooked bird — and what its early morning song has been trying to tell us all along.</p>
+  <div class="hero-meta">
+    <span>🕓 8 min read</span>
+    <span>·</span>
+    <span>🐦 Sparrow Stories</span>
+    <span>·</span>
+    <span>Bird Hush</span>
+  </div>
+  <div class="sparrow-icon">🐦</div>
+</header>
+
+<!-- ARTICLE -->
+<main class="article-wrap">
+
+  <!-- INTRO -->
+  <div class="intro-block">
+    <p>It is still dark outside. The street is quiet. The city has not woken up yet. There are no cars, no voices, no footsteps on the pavement. Just the kind of silence that feels heavy and soft at the same time. And then — before the sun has even touched the horizon — a small sound breaks through. It is not loud. It is not dramatic. It is just a bird. A small brown bird sitting on a wire above your window. A bird so ordinary that most people have stopped seeing it altogether. A sparrow. And it is singing.</p>
+  </div>
+
+  <!-- SECTION 1 -->
+  <div class="section-block">
+    <span class="section-label">Part One</span>
+    <h2>The World Before Light</h2>
+    <div class="body-text">
+      <p>To understand why the sparrow sings before sunrise, you have to understand what the world is like in those few minutes before the light comes. It is around four in the morning. The air is cool and still. The roads are empty. The hum of the city — that constant, invisible noise that fills every waking hour — has dropped to almost nothing.</p>
+      <p>Scientists call this the <strong>acoustic window</strong>. And for a small bird with a small voice, this window matters more than almost anything else. Sound travels differently at night. When the air is cool and still, sound waves carry further. A song that might travel twenty meters in the afternoon can travel hundreds of meters in the quiet of pre-dawn.</p>
+      <p>For a sparrow, this is everything. The sparrow has no size. It has no claws built for fighting. It has no speed to outrun danger. What it has is its voice. And in those quiet moments before sunrise, that voice can fill a territory and reach a mate in a way that is simply impossible once the world wakes up.</p>
+    </div>
+
+    <div class="pull-quote">
+      <p>The right moment — not the loudest, not the biggest stage, but the quietest, stillest moment — is when a small thing can finally be heard.</p>
+    </div>
+
+    <div class="body-text">
+      <p>As the very first traces of light appear — not sunrise, but the faintest suggestion of it — something shifts in the sparrow's brain. Light-sensitive cells deep inside its skull begin to stir. Hormones move. Testosterone rises. And as it does, the urge to sing becomes something the bird cannot hold back.</p>
+      <p>The sparrow sings because its body has been waiting all night to sing. Because the silence of darkness is, in a way, a held breath. And the first hint of light is the moment the sparrow finally exhales.</p>
+    </div>
+  </div>
+
+  <div class="divider"><span>✦</span></div>
+
+  <!-- SECTION 2 -->
+  <div class="section-block">
+    <span class="section-label">Part Two</span>
+    <h2>The Life You Never Saw</h2>
+    <div class="body-text">
+      <p>Most people think they know the sparrow. Small. Brown. Common. Everywhere. And they are right about all of those things. The house sparrow — <em>Passer domesticus</em> — is one of the most widespread birds on the planet. It lives on every continent except Antarctica. It has followed human beings into cities, farmlands, high-altitude mountain villages, and places where almost nothing else survives.</p>
+      <p>For eleven thousand years, the sparrow has lived beside us. That is longer than most civilizations. Longer than writing. Longer than the wheel. The sparrow was there when the first towns were built, when the first markets opened, when the first crops were planted.</p>
+    </div>
+
+    <div class="fact-box">
+      <div class="fact-box-title">Sparrow — Quick Facts</div>
+      <ul>
+        <li>Lives 3 to 5 years in the wild — record is 13 years</li>
+        <li>Only about 20% of young sparrows survive their first year</li>
+        <li>Mates for life — pairs return to the same nest season after season</li>
+        <li>Both parents build the nest, feed the chicks, and raise the young</li>
+        <li>A chick goes from hatching to flying in just 14 to 16 days</li>
+        <li>A good pair can raise three or four families in a single year</li>
+        <li>Has been living alongside humans for over 11,000 years</li>
+      </ul>
+    </div>
+
+    <div class="body-text">
+      <p>A sparrow's nest looks messy from the outside — straw, grass, paper, the odd piece of plastic. But the inside is lined with the softest materials the bird can find: fine feathers, hair, thread. The outside keeps the weather out. The inside keeps the family warm. It takes both parents to build it. And once it is done, they return to the same nest, the same spot, year after year.</p>
+      <p>Sparrows mate for life. The male defends their small patch of world. The female incubates the eggs. And then both of them feed the chicks — tiny, blind, featherless creatures that are ready to leave the nest in just two weeks. There is a word for what the sparrow does with its short life. It is not a word people usually use for birds. The word is <strong>devotion</strong>.</p>
+    </div>
+  </div>
+
+  <div class="divider"><span>✦</span></div>
+
+  <!-- SECTION 3 -->
+  <div class="section-block">
+    <span class="section-label">Part Three</span>
+    <h2>The Song Itself</h2>
+    <div class="body-text">
+      <p>A young sparrow does not hatch knowing how to sing. It is born with the impulse to sing, the way a human child is born with the impulse to speak. But the actual song — the specific melody, the sequence of notes — has to be learned. And the sparrow learns it the same way a child learns language. By listening.</p>
+      <p>In the first weeks of its life, a young male sparrow listens to the adult males around it. It absorbs the sounds. It stores them. And then, slowly, it begins to practice — producing sounds that start rough and broken and gradually become more precise. Scientists call this <em>subsong</em>, the bird equivalent of a child babbling.</p>
+    </div>
+
+    <div class="pull-quote">
+      <p>The song you hear outside your window in the morning is not just one bird's voice. It is the accumulated voice of every sparrow that has ever lived in that spot — going back years, going back decades.</p>
+    </div>
+
+    <div class="body-text">
+      <p>Sparrows in different neighborhoods sound different from each other. Scientists who have studied sparrow populations have found that songs vary between communities — not just between species, but between groups of the same species. A sparrow from one end of a city sings with a slightly different accent than one from the other end. These songs get passed down, generation to generation, like a dialect. Like a tradition.</p>
+      <p>And the dawn song specifically is not just the same song sung louder. It is different. More intense. More elaborate. The sparrow saves something for the dawn. After a full night of silence, the morning song is the most complete version of what the bird can do. Like a musician who walks out onto a stage at first light and plays better than they have ever played before — not because anyone is watching, but because there is something in the stillness that calls for it.</p>
+    </div>
+  </div>
+
+  <div class="divider"><span>✦</span></div>
+
+  <!-- SECTION 4 -->
+  <div class="section-block">
+    <span class="section-label">Part Four</span>
+    <h2>What We Stopped Noticing</h2>
+    <div class="body-text">
+      <p>The sparrow is disappearing. Not everywhere. Not all at once. But in the cities where it once lived in the greatest numbers — London, New Delhi, Paris — the house sparrow population has been falling for decades. Fewer insects for chicks to eat. Fewer old buildings to nest in. More glass and metal. More noise. More light pollution that disrupts the sparrow's internal clock and throws off the timing of everything.</p>
+      <p>What is clear is that a bird that has lived beside human beings for eleven thousand years is quietly struggling to live beside the version of us that exists today. And most people have not noticed. Because the sparrow is common. Because it is small. Because it does not have the colors of a tropical bird or the size of an eagle.</p>
+      <p>But the researchers who have spent their lives studying it will tell you something different. They will tell you that sparrows have friendships. That they prefer certain individuals over others. That they play. That they mourn. That a sparrow who loses its partner will sometimes sit in the same spot for days, calling out.</p>
+      <p>For eleven thousand years, we gave the sparrow a home without meaning to. And for the last few decades, we have been taking it away without noticing. The things closest to us — so ordinary we have stopped seeing them — are sometimes the things that need us most.</p>
+    </div>
+  </div>
+
+  <!-- OUTRO -->
+  <div class="outro">
+    <p>Tomorrow morning, if you are awake before the sun, listen. Not for anything dramatic. Not for anything rare. Just listen for the small sound that comes before everything else.</p>
+    <p>The sparrow has been singing every single morning for eleven thousand years. Through wars and famines and the rise and fall of cities. Every morning, before the alarm goes off, before the coffee is made — the sparrow opens its small chest and sings.</p>
+    <div class="closing-line">
+      "If a bird that weighs less than a handful of coins can find its voice every single morning before the sun comes up — then maybe the rest of us can too."
+    </div>
+    <a href="#" class="cta-btn">🐦 More Stories from Bird Hush</a>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2025 <strong>Bird Hush</strong> — Stories hidden in plain sight.</p>
+</footer>
+
+</body>
+</html>
